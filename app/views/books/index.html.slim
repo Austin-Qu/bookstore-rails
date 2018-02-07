@@ -1,0 +1,25 @@
+= search_form_for @q, :remote => true, url: books_path, :method => :get do |f|
+  .grid-x
+    .small-3.cell
+      = f.search_field :title_or_author_name_cont
+    .small-3.cell
+      = f.select :category_id_eq, options_from_collection_for_select(Category.all, "id", "name", nil), include_blank: "All categories"
+    .small-2.cell
+      = f.submit
+    .small-3.cell
+      = form_tag('books', id:'category_filter', remote: true, method: :get) do
+        = select_tag "category", options_from_collection_for_select(Category.all, "id", "name", params[:category]), include_blank: "Select a category"
+.grid-x
+  .small-4.cell
+    = form_tag('books', id:'page_limit_form', remote: true, method: :get) do
+      = select_tag "page_limit", options_for_select([10, 25, 50], selected: params[:page_limit] || 10)
+      span books per page
+
+#books
+  = render 'book_list', books: @books
+
+.grid-x
+  .small-9.cell
+  .small-3.cell
+  span#paginator
+    = paginate @books, remote: true

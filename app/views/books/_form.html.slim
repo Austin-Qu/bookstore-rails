@@ -1,0 +1,20 @@
+= form_for @book, class: "form-horizontal" do |f|
+  .form-group
+    = f.label :title, class: "col-sm-2 control-label"
+    = f.text_field :title, class: "form-control"
+  .form-group
+    = f.label :author_name, class: "col-sm-2 control-label"
+    = f.text_field :author_name, class: "form-control"
+  .form-group
+    = f.label :publisher_name, class: "col-sm-2 control-label"
+    = f.text_field :publisher_name, class: "form-control"
+  .form-group
+    = f.label :published_date, class: "col-sm-2 control-label"
+    = f.date_field :publisher_name, class: "form-control"
+  .form-group
+    = f.label :unit_price, class: "col-sm-2 control-label"
+    = f.number_field :unit_price, class: "form-control", step: :any
+  .form-group
+    = f.label :description, class: "col-sm-2 control-label"
+    = f.text_field :description, class: "form-control"
+  = f.submit 'Save',class: "btn btn-primary btn-block"

@@ -1,0 +1,7 @@
+| $("#books").html("
+= escape_javascript(render("book_list", books: @books))
+| ");
+
+| $("#paginator").html("
+= escape_javascript(paginate @books)
+| ");

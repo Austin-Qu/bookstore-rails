@@ -1,0 +1,6 @@
+.small-3.cell
+  img src="#{book.cover_url? ? book.cover_url : image_url('defbookcover.jpg')}" /
+  p = book.title
+  p = book.author_name
+  p = book.description
+  p = book.unit_price
