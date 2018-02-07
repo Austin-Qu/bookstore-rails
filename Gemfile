@@ -32,6 +32,7 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'foundation-rails'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'kaminari'
+gem 'foundation-icons-sass-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

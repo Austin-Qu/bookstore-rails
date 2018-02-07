@@ -1,4 +1,4 @@
 class Book < ApplicationRecord
-  has_one :author
-  has_one :category
+  belongs_to :author
+  belongs_to :category, optional: true
 end

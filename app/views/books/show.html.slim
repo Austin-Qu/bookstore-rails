@@ -1,2 +1,10 @@
-h1 Books#show
-p Find me in app/views/books/show.html.slim
+.grid-x.book-show
+  .small-3
+    img.cover-show src="#{@book.cover_url? ? @book.cover_url : image_url('defbookcover.jpg')}" /
+  .small-9
+    p.book-title = @book.title
+    p
+      span by&nbsp;
+      span = @book.author_name
+    p.description = show_description(@book)
+    p = @book.unit_price

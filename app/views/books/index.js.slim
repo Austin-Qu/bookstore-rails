@@ -2,6 +2,6 @@
 = escape_javascript(render("book_list", books: @books))
 | ");
 
-| $("#paginator").html("
+| $("#paginator_top, #paginator_btm").html("
 = escape_javascript(paginate @books)
 | ");

@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
   $("#category").change ->
+    console.log('cate')
     $("#category_filter").submit()
 
   $("#page_limit").change ->

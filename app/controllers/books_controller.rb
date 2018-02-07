@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   before_action :set_search, only: [:index]
 
   def index
-    if params[:category]
+    if params[:category].present?
       @books = Book.where(category_id: params[:category]).page(params[:page]).per(params[:page_limit] || 10)
     else
       @books = @q.result.page(params[:page]).per(params[:page_limit] || 10)
@@ -20,6 +20,8 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    author = Author.create(name: @book.author_name)
+    @book.author = author
 
     if @book.save
       redirect_to @book, notice: 'Book created.'

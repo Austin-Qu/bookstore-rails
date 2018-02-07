@@ -1,6 +1,10 @@
-.small-3.cell
-  img src="#{book.cover_url? ? book.cover_url : image_url('defbookcover.jpg')}" /
-  p = book.title
-  p = book.author_name
-  p = book.description
-  p = book.unit_price
+.small-3.cell.book-item
+  = link_to book_path(book) do
+    img.cover src="#{book.cover_url? ? book.cover_url : image_url('defbookcover.jpg')}" /
+  = link_to book_path(book) do
+    .book-title = book.title
+  .author-name = book.author_name
+  p.description = book.description
+  p.price
+    span $ 
+    span = book.unit_price

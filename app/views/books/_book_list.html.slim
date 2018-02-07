@@ -1,5 +1,5 @@
 - if books.any?
   - books.in_groups_of(4, false).each do |group|
-    .grid-x
+    .grid-x.book-row
       - group.each do |book|
         == render 'item', book: book

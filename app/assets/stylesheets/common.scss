@@ -1,0 +1,9 @@
+$theme-yellow: #fec403;
+$theme-choc: #62594f;
+$theme-brown: #5a4635;
+
+@mixin hide_text_too_long {
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+}

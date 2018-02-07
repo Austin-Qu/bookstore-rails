@@ -1,25 +1,37 @@
-= search_form_for @q, :remote => true, url: books_path, :method => :get do |f|
-  .grid-x
-    .small-3.cell
-      = f.search_field :title_or_author_name_cont, placeholder: "author, title"
-    .small-3.cell
-      = f.select :category_id_eq, options_from_collection_for_select(Category.all, "id", "name", nil), include_blank: "All categories"
-    .small-2.cell
-      = f.submit
-    .small-3.cell
-      = form_tag('books', id:'category_filter', remote: true, method: :get) do
-        = select_tag "category", options_from_collection_for_select(Category.all, "id", "name", params[:category]), include_blank: "Select a category"
-.grid-x
-  .small-4.cell
+.grid-x.search-bar
+  .small-9.cell.search-left
+    = search_form_for @q, :remote => true, url: books_path, :method => :get do |f|
+      .grid-x
+        .small-6.cell
+          = f.search_field :title_or_author_name_cont, placeholder: "author, title"
+        .small-3.cell
+          = f.select :category_id_eq, options_from_collection_for_select(Category.all, "id", "name", nil), include_blank: "All categories"
+        .small-1.cell.button-container
+          = button_tag do
+            i.fi-magnifying-glass
+  .small-3.cell.search-right
+    = form_tag('books', id:'category_filter', remote: true, method: :get) do
+      = select_tag "category", options_from_collection_for_select(Category.all, "id", "name", params[:category]), include_blank: "Select a category"
+.grid-x.page-info-bar
+  .small-5.cell.info-left
+    = get_category_name(params[:category])
+  .small-3.cell.info-right
     = form_tag('books', id:'page_limit_form', remote: true, method: :get) do
-      = select_tag "page_limit", options_for_select([10, 25, 50], selected: params[:page_limit] || 10)
-      span books per page
+      .grid-x
+        .small-4.cell
+          = select_tag "page_limit", options_for_select([10, 25, 50], selected: params[:page_limit] || 10)
+        .auto.cell
+          span books per page
+  .small-4.cell.info-page
+    span#paginator_top
+      = paginate @books, window: 1
 
 #books
   = render 'book_list', books: @books
 
 .grid-x
   .small-9.cell
+
   .small-3.cell
-    span#paginator
-      = paginate @books, remote: true
+    span#paginator_btm
+      = paginate @books, window: 1

@@ -1,3 +1,105 @@
-// Place all the styles related to the books controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "common";
+
+.search-bar {
+  justify-content: center;
+  height: 50px;
+  padding-left: 80px;
+  padding-right: 80px;
+  background-color: $theme-choc;
+  .search-left, .search-right {
+    display: flex;
+    align-items: center;
+    form {
+      height: 30px;
+      width: 100%;
+      input, select {
+        height: 30px;
+        margin-bottom: 0;
+      }
+    }
+  }
+  .search-left {
+    .button-container {
+      padding-left: 10px;
+    }
+  }
+  button {
+    background-color: $theme-yellow;
+    border-radius: 50%;
+    display: block;
+    height: 30px;
+    width: 30px;
+    i {
+      font-size: 20px;
+      color: white;
+    }
+  }
+}
+
+.page-info-bar {
+  height: 50px;
+  padding-left: 80px;
+  padding-right: 80px;
+
+  .info-left, .info-right, .info-page {
+    align-items: center;
+    display: flex;
+  }
+  .info-right {
+    form {
+      width: 100%;
+      select {
+        height: 30px;
+        margin-bottom: 0;
+      }
+    }
+  }
+  .info-page {
+    ul {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#books {
+  padding-left: 80px;
+  padding-right: 80px;
+  .book-row {
+    margin-bottom: 50px;
+
+    .book-item {
+      padding-left: 15px;
+      padding-right: 15px;
+      border-right: 1px solid #e4e4e4;
+      .book-title {
+        color: $theme-yellow;
+      }
+      .cover {
+        max-width: 120px;
+      }
+      .description {
+        font-size: 12px;
+        max-height: 90px;
+        @include hide_text_too_long;
+      }
+    }
+    .book-item:nth-last-child(1) {
+      border-right: 0;
+    }
+  }
+}
+
+.book-show {
+  padding: 80px;
+  .book-title {
+    color: $theme-yellow;
+  }
+  .description {
+    font-size: 12px;
+    max-height: 90px;
+    @include hide_text_too_long;
+  }
+  .cover-show {
+    max-width: 200px;
+  }
+}
