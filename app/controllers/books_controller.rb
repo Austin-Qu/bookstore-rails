@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :get_ips
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
   before_action :set_book, only: [:edit, :update, :destroy, :show]
   before_action :set_search, only: [:index]
