@@ -28,6 +28,16 @@ describe 'navigate' do
       visit books_path
       expect(page).to have_content(/Title|Another/)
     end
+
+    it 'can search' do
+      book1 = FactoryBot.create(:book)
+      book2 = FactoryBot.create(:second_book)
+      visit books_path
+      fill_in 'q[title_or_author_name_cont]', with: "Ano"
+      click_on "search_btn"
+
+      expect(page).to have_content(/Another/)
+    end
   end
 
   describe 'new' do

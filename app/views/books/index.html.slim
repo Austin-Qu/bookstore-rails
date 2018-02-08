@@ -7,7 +7,7 @@
         .small-3.cell
           = f.select :category_id_eq, options_from_collection_for_select(Category.all, "id", "name", nil), include_blank: "All categories"
         .small-1.cell.button-container
-          = button_tag do
+          = button_tag id: 'search_btn' do
             i.fi-magnifying-glass
   .small-3.cell.search-right
     = form_tag('books', id:'category_filter', remote: true, method: :get) do
