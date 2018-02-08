@@ -6,3 +6,12 @@
           span.title-left bookstore
           span.title-right .com
   .top-bar-right
+    - if current_user.present?
+      span
+        = link_to "Add Book ", new_book_path, id: 'new_book_from_nav'
+      span
+        = link_to "Visitor List ", visitors_path
+      span
+        = link_to "Logout", destroy_user_session_path, method: :delete
+    - else
+      = link_to "Login", new_user_session_path

@@ -1,4 +1,7 @@
 = form_for @book, class: "form-horizontal" do |f|
+  - if @book.errors.any?
+    - @book.errors.full_messages.each do |error|
+      .error = error
   .form-group
     = f.label :title, class: "col-sm-2 control-label"
     = f.text_field :title, class: "form-control"
@@ -10,7 +13,7 @@
     = f.text_field :publisher_name, class: "form-control"
   .form-group
     = f.label :published_date, class: "col-sm-2 control-label"
-    = f.date_field :publisher_name, class: "form-control"
+    = f.date_field :published_date, class: "form-control"
   .form-group
     = f.label :unit_price, class: "col-sm-2 control-label"
     = f.number_field :unit_price, class: "form-control", step: :any

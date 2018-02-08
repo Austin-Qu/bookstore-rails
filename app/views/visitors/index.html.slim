@@ -1,0 +1,15 @@
+table
+  thead
+    tr
+      th Visitor id
+      th Visitor remote ip
+      th Visit time
+  tbody
+    - @visitors.each do |visitor|
+      tr
+        td
+          = visitor.id
+        td
+          = visitor.remote_ip
+        td
+          = visitor.visit_time

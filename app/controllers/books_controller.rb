@@ -35,6 +35,11 @@ class BooksController < ApplicationController
   end
 
   def update
+    unless Author.where(name: @book.author_name).any?
+      author = Author.create(name: @book.author_name)
+      @book.author = author
+    end
+     
     if @book.update(book_params)
       redirect_to @book, notice: 'Book updated.'
     else

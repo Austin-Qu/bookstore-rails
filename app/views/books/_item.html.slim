@@ -3,8 +3,14 @@
     img.cover src="#{book.cover_url? ? book.cover_url : image_url('defbookcover.jpg')}" /
   = link_to book_path(book) do
     .book-title = book.title
+
+  - if current_user.present?
+    span
+      = link_to 'Edit', edit_book_path(book), id: "edit_book_#{book.id}_from_index"
+    span
+      = link_to ' Delete', book_path(book), method: :delete, id: "delete_book_#{book.id}_from_index", data: { confirm: 'Are you sure?' }
   .author-name = book.author_name
   p.description = book.description
   p.price
-    span $ 
+    span $
     span = book.unit_price
