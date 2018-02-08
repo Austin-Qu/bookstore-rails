@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe 'navigate' do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
 
   let(:book) do
-    FactoryGirl.create(:book)
+    FactoryBot.create(:book)
   end
 
   before do
@@ -23,8 +23,8 @@ describe 'navigate' do
     end
 
     it 'has a list of books' do
-      book1 = FactoryGirl.create(:book)
-      book2 = FactoryGirl.create(:second_book)
+      book1 = FactoryBot.create(:book)
+      book2 = FactoryBot.create(:second_book)
       visit books_path
       expect(page).to have_content(/Title|Another/)
     end
@@ -41,7 +41,7 @@ describe 'navigate' do
 
   describe 'delete' do
     it 'can be deleted' do
-      book_delete = FactoryGirl.create(:book)
+      book_delete = FactoryBot.create(:book)
       visit books_path
 
       click_link("delete_book_#{book_delete.id}_from_index")

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Book, type: :model do
   describe 'creation' do
     before do
-      @book = FactoryGirl.create(:book)
+      @book = FactoryBot.create(:book)
     end
 
     it 'can be created' do
